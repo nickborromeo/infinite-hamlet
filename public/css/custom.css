@@ -1,0 +1,12 @@
+.btn-width {
+      width: 300px !important;
+ }
+
+ .center {
+   margin:0 auto;
+   float:none;
+ }
+
+.btn-space {
+  margin: 3px;
+}

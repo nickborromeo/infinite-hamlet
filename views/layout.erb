@@ -1,8 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/custom.css" rel="stylesheet" media="screen">
   </head>
   <body>
-    <header>Embarcadero Technologies</header>
+    <div class="container">
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <img class="brand" src="img/embt-logo.png">
+          <ul class="nav">
+            <li class="divider-vertical"><a href="/">Home</a><li>
+            <li ><a href="/support">Support Cases</a><li>
+            <li class="divider-vertical"><a href="/customer-service">CS Cases</a><li>
+          </ul>
+        </div>
+      </div>
     <%= yield %>
+  </div>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
