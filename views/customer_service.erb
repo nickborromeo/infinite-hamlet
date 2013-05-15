@@ -1,9 +1,18 @@
 
 <section>
-  <form method="post" enctype="multipart/form-data">
-    <label>Customer Service Cases</label>
-    <input type="file" name="customer-service-report">
-    <br/>
-    <input type="submit" name="merge-cs" value="Generate Customer Service Report">
+  <form method="post" enctype="multipart/form-data" class="text-center">
+    <hr />
+    <h2>Customer Service Cases</h2>
+    <hr />
+    <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>Warning!</strong> The report is being generated. You will be prompted to download the report after this process.
+    </div>
+    <div class="fileupload fileupload-new" data-provides="fileupload">
+      <div class="input-append">
+        <div class="uneditable-input span4"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" name="customer-service-report"/></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+      </div>
+    </div>
+    <button id="cs-btn" class="btn btn-danger" type="submit">Generate Report</button>
   </form>
 </section>

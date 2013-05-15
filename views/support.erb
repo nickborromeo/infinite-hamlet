@@ -4,12 +4,16 @@
     <hr />
     <h2>Support Cases</h2>
     <hr/>
+    <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>Warning!</strong> The report is being generated. You will be prompted to download the report after this process.
+    </div>
     <div class="fileupload fileupload-new" data-provides="fileupload">
       <div class="input-append">
         <div class="uneditable-input span4"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" name="support-report"/></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
       </div>
     </div>
-    <button class="btn btn-danger" type="button">Generate Report</button>
+    <button id="s-btn" class="btn btn-danger" type="submit">Generate Report</button>
     <!-- <input type="submit" name="merge&#45;support" value="Generate Support Report"> -->
   </form>
 </section>
