@@ -68,7 +68,6 @@ class Report
           merge_sheet.row(count).push(cssc_row[16])
           merge_sheet.row(count).push(cssc_row[17])
           count += 1
-          puts "Merging matched entry"
           merge_book.write "./reports/merged_support_cases_#{created_time}.xls"
         end
       end
