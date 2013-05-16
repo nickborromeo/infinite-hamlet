@@ -1,3 +1,3 @@
 require './merge'
-require 'lib/report'
+require './lib/report'
 run Sinatra::Application
