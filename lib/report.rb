@@ -6,8 +6,8 @@ class Report
 
     s_report = Spreadsheet.open(support_report)
 
-    support_stats = s_report.worksheet(0)
-    support_cases = s_report.worksheet(1)
+    support_stats = s_report.worksheet(1)
+    support_cases = s_report.worksheet(0)
 
     merge_book = Spreadsheet::Workbook.new
     merge_sheet = merge_book.create_worksheet #=> "Name of Sheet"
@@ -15,23 +15,18 @@ class Report
 
     #Generate the Headers
     merge_sheet.row(0).push("Case Number")
-    merge_sheet.row(0).push("Type")
-    merge_sheet.row(0).push("Bug ID")
-    merge_sheet.row(0).push("Product Family")
     merge_sheet.row(0).push("Product")
     merge_sheet.row(0).push("Product Version")
     merge_sheet.row(0).push("Account Name")
     merge_sheet.row(0).push("Contact Name")
-    merge_sheet.row(0).push("Subject")
+    merge_sheet.row(0).push("Case Lead")
     merge_sheet.row(0).push("Case Owner")
     merge_sheet.row(0).push("Opened Date")
-    merge_sheet.row(0).push("Last Date Modified")
-    merge_sheet.row(0).push("Age")
-    merge_sheet.row(0).push("Status")
-    merge_sheet.row(0).push("Case Origin")
+    merge_sheet.row(0).push("Case Last Modified Date")
+    merge_sheet.row(0).push("Age(Days)")
     merge_sheet.row(0).push("Region")
-    merge_sheet.row(0).push("Created By")
     merge_sheet.row(0).push("Case Record Type")
+    merge_sheet.row(0).push("Product Family")
     merge_sheet.row(0).push("Initial response time")
     merge_sheet.row(0).push("Handling of support case")
     merge_sheet.row(0).push("Resolution of support case")
@@ -63,11 +58,6 @@ class Report
           merge_sheet.row(count).push(sc_row[10])
           merge_sheet.row(count).push(sc_row[11])
           merge_sheet.row(count).push(sc_row[12])
-          merge_sheet.row(count).push(sc_row[13])
-          merge_sheet.row(count).push(sc_row[14])
-          merge_sheet.row(count).push(sc_row[15])
-          merge_sheet.row(count).push(sc_row[16])
-          merge_sheet.row(count).push(sc_row[17])
           merge_sheet.row(count).push(cssc_row[9])
           merge_sheet.row(count).push(cssc_row[10])
           merge_sheet.row(count).push(cssc_row[11])
@@ -92,8 +82,8 @@ class Report
 
     cs_report = Spreadsheet.open(cs_cases)
 
-    customer_service_stats = cs_report.worksheet(0)
-    customer_service_cases = cs_report.worksheet(1)
+    customer_service_stats = cs_report.worksheet(2)
+    customer_service_cases = cs_report.worksheet(0)
 
     merge_book = Spreadsheet::Workbook.new
     merge_sheet = merge_book.create_worksheet #=> "Name of Sheet"
@@ -101,36 +91,30 @@ class Report
 
     #Generate the Headers
     merge_sheet.row(0).push("Case Number")
-    merge_sheet.row(0).push("Type")
-    merge_sheet.row(0).push("Bug ID")
-    merge_sheet.row(0).push("Product Family")
     merge_sheet.row(0).push("Product")
     merge_sheet.row(0).push("Product Version")
     merge_sheet.row(0).push("Account Name")
     merge_sheet.row(0).push("Contact Name")
-    merge_sheet.row(0).push("Subject")
+    merge_sheet.row(0).push("Case Lead")
     merge_sheet.row(0).push("Case Owner")
     merge_sheet.row(0).push("Opened Date")
     merge_sheet.row(0).push("Case Last Modified Date")
-    merge_sheet.row(0).push("Age")
-    merge_sheet.row(0).push("Status")
-    merge_sheet.row(0).push("Case Origin")
+    merge_sheet.row(0).push("Age(Days)")
     merge_sheet.row(0).push("Region")
-    merge_sheet.row(0).push("Created By")
     merge_sheet.row(0).push("Case Record Type")
+    merge_sheet.row(0).push("Product Family")
     merge_sheet.row(0).push("Response Time")
     merge_sheet.row(0).push("Communication")
     merge_sheet.row(0).push("Resolution")
     merge_sheet.row(0).push("Overall satisfaction")
     merge_sheet.row(0).push("Open-Ended Response")
-    merge_sheet.row(0).push("How did you contact support?")
     
     merge_book.write "./reports/merged_customer_service_cases_#{created_time}.xls"
     
     count = 1 #start with row after the headers
     customer_service_stats.each do |customer_sat_row|
       customer_service_cases.each do |service_row|
-        if (customer_sat_row[0] == service_row[0])
+        if (customer_sat_row[8] == service_row[0].to_i)
           merge_sheet.row(count).push(service_row[0])
           merge_sheet.row(count).push(service_row[1])
           merge_sheet.row(count).push(service_row[2])
@@ -144,17 +128,11 @@ class Report
           merge_sheet.row(count).push(service_row[10])
           merge_sheet.row(count).push(service_row[11])
           merge_sheet.row(count).push(service_row[12])
-          merge_sheet.row(count).push(service_row[13])
-          merge_sheet.row(count).push(service_row[14])
-          merge_sheet.row(count).push(service_row[15])
-          merge_sheet.row(count).push(service_row[16])
-          merge_sheet.row(count).push(service_row[17])
-          merge_sheet.row(count).push(customer_sat_row[1])
-          merge_sheet.row(count).push(customer_sat_row[2])
-          merge_sheet.row(count).push(customer_sat_row[3])
-          merge_sheet.row(count).push(customer_sat_row[4])
-          merge_sheet.row(count).push(customer_sat_row[5])
-          merge_sheet.row(count).push(customer_sat_row[6])
+          merge_sheet.row(count).push(customer_sat_row[9])
+          merge_sheet.row(count).push(customer_sat_row[10])
+          merge_sheet.row(count).push(customer_sat_row[11])
+          merge_sheet.row(count).push(customer_sat_row[12])
+          merge_sheet.row(count).push(customer_sat_row[13])
 
           count += 1
           merge_book.write "./reports/merged_customer_service_cases_#{created_time}.xls"
